@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'Nekst';
+  font-style:  normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(./Nekst/NekstSemiBold.woff2) format('woff2'),
+       url(./Nekst/NekstSemiBold.woff2) format('woff'),
+       url(./Nekst/NekstSemiBold.ttf) format('truetype'),
+       url(./Nekst/NekstSemiBold.eot) format('eot'),
+       url(./Nekst/NekstSemiBold.OTF) format('opentype');
+}
