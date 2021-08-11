@@ -9,16 +9,45 @@
 <body class="page">
   <main class="page__content">
     <section class="intro">
+      <div class="modal" id="formModal">
+        <div class="form">
+          <form class="form__form-element" name="form">
+            <fieldset class="form__fieldset">
+              <input class="form__input" type="text" name="name" placeholder="Имя, фамилия" required>
+              <input class="form__input" type="text" name="company" placeholder="Компания" required>
+              <input class="form__input" type="text" name="position" placeholder="Должность" required>
+              <input class="form__input" type="email" name="email" placeholder="E-mail" required>
+            </fieldset>
+            <button class="form__submit-btn" type="submit"></button>
+            <span class="form__label">Нажимая кнопку отправить, вы даёте согласие на обработку персональных данных</span>
+          </form>
+          <div class="form__image-container">
+            <img src="<%=require('./images/movement-logo.svg')%>" alt="logo" class="form__logo">
+            <img src="<%=require('./images/coin.png')%>" alt="image" class="form__image">
+          </div>
+        </div>
+      </div>
+
       <img class="intro__bg" src="<%=require('./images/intro-bg.png')%>" alt="bg">
 
       <div class="intro__inner page__section">
         <img class="intro__box" src="<%=require('./images/box.svg')%>" alt="box">
 
-        <p class="intro__subtitle">Поэтому для смелых девелоперов мы открываем продажи участия в 3-м форуме. Если вы были на «Движении» 2021, даем слово, чтов феврале 2022 сделаем еще лучше.</p>
+        <div class="intro__container intro__container_place_main-title">
+          <h1 class="intro__main-title">третий форум недвижимости «‎движение»</h1>
+          <div class="intro__big-btn-container">
+            <button class="intro__big-btn" type="button"></button>
+            <span class="intro__big-btn-label">Бронируйте билеты early birds по стартовой цене.</span>
+          </div>
+        </div>
 
-        <div class="intro__title-container">
+        <div class="intro__container intro__container_place_subtitle">
+          <p class="intro__subtitle">Поэтому для смелых девелоперов мы открываем продажи участия в 3-м форуме. Если вы были на «Движении» 2021, даем слово, чтов феврале 2022 сделаем еще лучше.</p>
+        </div>
 
-          <h1 class="intro__title">Смелость города берет.<br>И строит.</h1>
+        <div class="intro__container intro__container_place_title">
+
+          <span class="intro__title">Смелость города берет.<br>И строит.</span>
           <div class="intro__bottom">
             <a class="intro__link intro__link_type_left" href="#" target="_blank" title="Сайт форума" rel="noopener">
               <img class="intro__logo" src="<%=require('./images/movement-logo.svg')%>" alt="logo">
@@ -38,6 +67,6 @@
       </div>
     </section>
   </main>
-  <div style="height: 250px;"></div>
+  <div style="height: 1000px;"></div>
 </body>
 </html>
