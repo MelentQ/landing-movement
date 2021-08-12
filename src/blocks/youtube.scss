@@ -1,0 +1,93 @@
+.youtube {
+  position: relative;
+
+  width: 85%;
+
+  background-color: #E93939;
+
+  &__container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+  }
+
+  &__overlay-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+    cursor: pointer;
+
+    transition: visibility 0.3s, opacity 0.3s ease;
+
+    &:hover .youtube__overlay {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    &:hover .youtube__button-icon {
+      fill: #E93939;
+    }
+
+    &_closed {
+      visibility: hidden;
+      opacity: 0;
+    }
+  }
+
+  &__iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: none;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__overlay-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    transition: background-color 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  &__button-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: block;
+
+    width: 69px;
+    height: 49px;
+
+    transition: fill 0.3s ease;
+    fill: #ff5757;
+  }
+}

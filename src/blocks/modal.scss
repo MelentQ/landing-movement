@@ -19,4 +19,11 @@
     visibility: visible;
     opacity: 1;
   }
+
+  &_type {
+
+    &_youtube {
+      z-index: 399;
+    }
+  }
 }
