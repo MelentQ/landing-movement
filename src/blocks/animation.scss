@@ -1,0 +1,169 @@
+@keyframes btn {
+  0% {
+    top: 0;
+  }
+
+  50% {
+    top: 16px;
+  }
+
+  100% {
+    top: 0;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+$step: -244.8px;
+
+@keyframes animationBox {
+  0% {
+    background-position: 0 0;
+  }
+
+  6% {
+    background-position: $step 0;
+  }
+
+  12% {
+    background-position: (2 * $step) 0;
+  }
+
+  18% {
+    background-position: (3 * $step) 0;
+  }
+
+  24% {
+    background-position: (4 * $step) 0;
+  }
+
+  30% {
+    background-position: (5 * $step) 0;
+  }
+
+  36% {
+    background-position: (6 * $step) 0;
+  }
+
+  42% {
+    background-position: (7 * $step) 0;
+  }
+
+  48% {
+    background-position: (8 * $step) 0;
+  }
+
+  54% {
+    background-position: (9 * $step) 0;
+  }
+
+  60% {
+    background-position: (10 * $step) 0;
+  }
+
+  66% {
+    background-position: (11 * $step) 0;
+  }
+
+  72% {
+    background-position: (12 * $step) 0;
+  }
+
+  78% {
+    background-position: (13 * $step) 0;
+  }
+
+  84% {
+    background-position: (14 * $step) 0;
+  }
+
+  90% {
+    background-position: (15 * $step) 0;
+  }
+
+  100% {
+    background-position: (16 * $step) 0;
+  }
+}
+
+$step: -244.8px;
+
+@keyframes animationBoxReverse {
+  0% {
+    background-position: (16 * $step) 0;
+  }
+
+  6% {
+    background-position: (15 * $step) 0;
+  }
+
+  12% {
+    background-position: (14 * $step) 0;
+  }
+
+  18% {
+    background-position: (13 * $step) 0;
+  }
+
+  24% {
+    background-position: (12 * $step) 0;
+  }
+
+  30% {
+    background-position: (11 * $step) 0;
+  }
+
+  36% {
+    background-position: (10 * $step) 0;
+  }
+
+  42% {
+    background-position: (9 * $step) 0;
+  }
+
+  48% {
+    background-position: (8 * $step) 0;
+  }
+
+  54% {
+    background-position: (7 * $step) 0;
+  }
+
+  60% {
+    background-position: (6 * $step) 0;
+  }
+
+  66% {
+    background-position: (5 * $step) 0;
+  }
+
+  72% {
+    background-position: (4 * $step) 0;
+  }
+
+  78% {
+    background-position: (3 * $step) 0;
+  }
+
+  84% {
+    background-position: (2 * $step) 0;
+  }
+
+  90% {
+    background-position: (1 * $step) 0;
+  }
+
+  100% {
+    background-position: (0 * $step) 0;
+  }
+}

@@ -1,6 +1,8 @@
 @import '../vendor/normalize.css';
 @import '../vendor/fonts/fonts.css';
 
+@import '../blocks/animation';
+
 @import '../blocks/page';
 @import '../blocks/intro';
 @import '../blocks/modal';
@@ -8,5 +10,5 @@
 @import '../blocks/slider';
 @import '../blocks/youtube';
 @import '../blocks/socials';
-@import '../blocks/test';
 @import '../blocks/progressBar';
+@import '../blocks/loading';

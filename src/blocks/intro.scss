@@ -63,14 +63,29 @@
   }
 
   &__title {
+    display: flex;
+    flex-direction: column;
+
     margin: 0;
 
+    transition: transform 1s, opacity 1s ease;
+
+    &_hidden {
+      transform: translateY(-200px);
+      opacity: 0;
+    }
+  }
+
+  &__title-span {
     font-weight: 600;
     font-size: 64px;
     line-height: 1.2;
     text-align: center;
 
-    transition: transform 1s, opacity 1s ease;
+    opacity: 0;
+    visibility: hidden;
+
+    transition: opacity 1s, visibility 1s ease;
 
     @media screen and (max-width: 1679px) {
       font-size: 48px;
@@ -92,9 +107,16 @@
       font-size: 22px;
     }
 
-    &_hidden {
-      transform: translateY(-200px);
-      opacity: 0;
+    &_dir {
+
+      &_bottom {
+        transition: opacity 1s 1s, visibility 1s 1s ease;
+      }
+    }
+
+    &_animated {
+      opacity: 1;
+      visibility: visible;
     }
   }
 
@@ -128,7 +150,7 @@
       }
 
       @media screen and (max-width: 599px){
-        transform: translate(-50%, -30%) scale(2);
+        transform: translate(-50%, -30%) scale(1.5);
       }
     }
 
@@ -140,16 +162,58 @@
   }
 
   &__box-image {
+    position: relative;
+
     height: 100%;
 
     background-image: url(../images/box.png);
     background-repeat: no-repeat;
     background-position: 0 0;
     background-size: auto 100%;
+
+    &_animation {
+      animation-name: animationBox;
+      animation-duration: 0.5s;
+      animation-timing-function: step-end;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+    }
+
+    &_animationReverse {
+      animation-name: animationBoxReverse;
+      animation-duration: 0.5s;
+      animation-timing-function: step-end;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+    }
+  }
+
+  &__box-shadow {
+    opacity: 0;
+    position: absolute;
+    top: 38%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+
+    background: rgb(115,148,255);
+    background: radial-gradient(circle, rgba(115,148,255,0.2) 0%, rgba(255,255,255,0) 50%);
+
+    &_animated {
+      opacity: 1;
+      animation-name: pulse;
+      animation-duration: 2s;
+      animation-timing-function: ease;
+      animation-iteration-count: infinite;
+    }
   }
 
   &__bottom {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     justify-content: space-between;
     align-items: center;
 
@@ -173,8 +237,14 @@
     &_type {
 
       &_left {
-        width: 187px;
-        height: 47px;
+        justify-self: flex-start;
+        width: 281px;
+        height: 71px;
+
+        @media screen and (max-width: 767px){
+          width: 187px;
+          height: 47px;
+        }
 
         @media screen and (max-width: 599px){
           width: 140px;
@@ -188,8 +258,14 @@
       }
 
       &_right {
-        width: 210px;
-        height: 55px;
+        justify-self: flex-end;
+        width: 315px;
+        height: 83px;
+
+        @media screen and (max-width: 767px){
+          width: 210px;
+          height: 55px;
+        }
 
         @media screen and (max-width: 599px){
           width: 157px;
@@ -223,17 +299,23 @@
   }
 
   &__btn {
+    justify-self: center;
     position: relative;
 
     padding: 0;
-    width: 81px;
-    height: 81px;
+    width: 120px;
+    height: 120px;
 
     background: none;
     border: none;
     cursor: pointer;
 
     transition: transform 1s, opacity 1s ease;
+
+    @media screen and (max-width: 767px){
+      width: 81px;
+      height: 81px;
+    }
 
     @media screen and (max-width: 359px){
       width: 71px;
@@ -250,36 +332,40 @@
     }
 
     &:hover .intro__btn-icon_type_down {
-      transform: translateY(12px);
+      transform: scale(1.05);
     }
 
     &:focus .intro__btn-icon_type_down {
-      transform: translateY(12px);
-    }
-
-    &:hover .intro__btn-icon_type_up {
-      transform: translateY(-12px);
-    }
-
-    &:focus .intro__btn-icon_type_up {
-      transform: translateY(-12px);
+      transform: scale(1.05);
     }
   }
 
-  &__btn-icon {
+  &__btn-label {
     position: absolute;
-    top: 0;
-    transition: transform 0.2s ease;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
 
-    width: 70px;
-    height: 70px;
+    color: white;
+    font-size: 12px;
+    line-height: 1.4;
+    letter-spacing: 1px;
+  }
+
+  &__btn-icon {
+    position: relative;
+
+    animation-name: btn;
+    animation-duration: 2s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+
+    width: 100%;
+    height: 100%;
 
     object-fit: cover;
 
-    @media screen and (max-width: 359px){
-      width: 60px;
-      height: 60px;
-    }
+    transition: transform 0.3s ease;
 
     &_type {
 
@@ -386,7 +472,7 @@
     transition: transform 1s 0.2s, visibility 1s 0.2s, opacity 1s 0.2s ease;
 
     @media screen and (max-width: 767px) {
-      margin-bottom: 0;
+      margin-bottom: 20px;
 
       font-size: 44px;
     }
@@ -440,10 +526,15 @@
     border: solid 6px white;
     cursor: pointer;
     overflow: hidden;
+    transition: transform 0.3s ease;
 
     @media screen and (max-width: 767px) {
       width: 100%;
       height: 80px;
+    }
+
+    &:hover {
+      transform: scale(1.05);
     }
 
     &:focus {

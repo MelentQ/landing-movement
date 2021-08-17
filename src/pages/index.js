@@ -4,8 +4,7 @@ import Swiper from '../vendor/swiper/swiper-bundle.min.js';
 
 import { Marquee, loop } from 'dynamic-marquee';
 
-import gsap from '../vendor/GSAP/gsap.min';
-import {ScrollTrigger} from '../vendor/GSAP/ScrollTrigger.min';
+const body = document.querySelector('.page');
 
 const intro = document.querySelector('.intro');
 
@@ -15,9 +14,13 @@ const introContainer = intro.querySelector('.intro__inner');
 
 const boxContainer = introContainer.querySelector('.intro__box-container');
 const box = boxContainer.querySelector('.intro__box');
+const boxImage = box.querySelector('.intro__box-image');
+const boxShadow = box.querySelector('.intro__box-shadow');
 
 const titleBox = introContainer.querySelector('.intro__container_place_title');
 const introTitle = titleBox.querySelector('.intro__title');
+const introTitleUp = introTitle.querySelector('.intro__title-span_dir_up');
+const introTitleBottom = introTitle.querySelector('.intro__title-span_dir_bottom');
 const introLeftLink = titleBox.querySelector('.intro__link_type_left');
 const introScrollButton = titleBox.querySelector('.intro__btn');
 const introRightLink = titleBox.querySelector('.intro__link_type_right');
@@ -37,6 +40,12 @@ const footer = document.querySelector('.socials');
 // https://openbase.com/js/dynamic-marquee
 const MainBtnMarquee = new Marquee(mainBtn);
 
+// Предотвращает смещение первого элемента
+const emptyElement = document.createElement('div');
+emptyElement.style.width = '20px';
+emptyElement.style.height = '20px';
+MainBtnMarquee.appendItem(emptyElement);
+
 MainBtnMarquee.setRate(-80);
 loop(MainBtnMarquee, [() => {
   const marqueebtnLabel = document.createElement('span');
@@ -45,8 +54,14 @@ loop(MainBtnMarquee, [() => {
   return marqueebtnLabel;
 }]);
 
-const submitBtn = document.querySelector('.form__submit-btn');
+// Предотвращает смещение первого элемента
+const emptyElement2 = document.createElement('div');
+emptyElement2.style.width = '20px';
+emptyElement2.style.height = '20px';
+
+const submitBtn = document.querySelector('.form__submit-btn_place_form');
 const submitBtnMarquee = new Marquee(submitBtn);
+submitBtnMarquee.appendItem(emptyElement2);
 submitBtnMarquee.setRate(-80);
 loop(submitBtnMarquee, [() => {
   const marqueebtnLabel = document.createElement('span');
@@ -63,9 +78,34 @@ loop(submitBtnMarquee, [() => {
 }
 ]);
 
+const emptyElement3 = document.createElement('div');
+emptyElement3.style.width = '20px';
+emptyElement3.style.height = '20px';
+
+const subscribeBtn = document.querySelector('.form__submit-btn_place_footer');
+const subscribeBtnMarquee = new Marquee(subscribeBtn);
+subscribeBtnMarquee.appendItem(emptyElement3);
+subscribeBtnMarquee.setRate(-80);
+loop(subscribeBtnMarquee, [() => {
+  const marqueebtnLabel = document.createElement('span');
+  marqueebtnLabel.classList.add('form__submit-btn-text');
+  marqueebtnLabel.textContent = 'отправить';
+  return marqueebtnLabel;
+},
+() => {
+  const marqueebtnLabel = document.createElement('span');
+  marqueebtnLabel.classList.add('form__submit-btn-text');
+  marqueebtnLabel.classList.add('form__submit-btn-text_color_red');
+  marqueebtnLabel.textContent = 'отправить';
+  return marqueebtnLabel;
+}
+]);
+
 // Массив значений скролла, при которых срабатывает анимация
-const animTrigger = [400, 1050, 1450, 1850];
+const animTrigger = [400, 1050, 1850, 2650];
 const initialScroll = window.pageYOffset;
+
+let onFooter = false;
 
 const checkClasses = () => {
 
@@ -95,6 +135,10 @@ const checkClasses = () => {
   if (window.pageYOffset >= animTrigger[1]) {
     bgImage.classList.add('intro__bg_zoomed');
 
+    boxShadow.classList.remove('intro__box-shadow_animated');
+    boxImage.classList.remove('intro__box-image_animationReverse');
+    boxImage.classList.add('intro__box-image_animation');
+
     titleBox.classList.remove('intro__container_active');
     subtitle.classList.add('intro__subtitle_hidden');
 
@@ -104,6 +148,9 @@ const checkClasses = () => {
   }
   else {
     bgImage.classList.remove('intro__bg_zoomed');
+
+    boxShadow.classList.add('intro__box-shadow_animated');
+    boxImage.classList.remove('intro__box-image_animation');
 
     subtitle.classList.remove('intro__subtitle_hidden');
 
@@ -134,10 +181,17 @@ const checkClasses = () => {
   if (window.pageYOffset >= animTrigger[3]) {
     slider.classList.add('slider_hidden');
     footer.classList.add('socials_opened');
+
+    if (!onFooter) {
+      window.scrollTo(0, 3000);
+      onFooter = true;
+    }
   }
   else {
     slider.classList.remove('slider_hidden');
     footer.classList.remove('socials_opened');
+
+    onFooter = false;
   }
 }
 
@@ -195,17 +249,31 @@ const bar3 = document.querySelector('#bar3');
 const bar4 = document.querySelector('#bar4');
 const bar5 = document.querySelector('#bar5');
 
-window.addEventListener('scroll', () => {
-  checkProgress();
-  checkClasses();
-  console.log(window.pageYOffset)
-})
+const loadingModal = document.querySelector('.loading');
 
-document.addEventListener("DOMContentLoaded", function(){
+window.onload = () => {
   checkClasses();
   checkProgress();
-});
+  loadingModal.classList.add('loading_hidden');
+  body.classList.remove('page_fixed');
 
+  introTitleUp.classList.add('intro__title-span_animated');
+  introTitleBottom.classList.add('intro__title-span_animated');
+
+  let scrollPos = window.pageYOffset;
+  window.addEventListener('scroll', () => {
+    const curPos = window.pageYOffset;
+
+    if (curPos < scrollPos && curPos <= animTrigger[1] && curPos > animTrigger[0]) {
+      boxImage.classList.add('intro__box-image_animationReverse');
+    }
+
+    checkProgress();
+    checkClasses();
+
+    scrollPos = curPos;
+  })
+}
 
 introScrollButton.addEventListener('click', () => {
   window.scrollTo(0, animTrigger[0]);
@@ -217,6 +285,7 @@ const formModal = document.querySelector('#formModal');
 
 mainBtn.addEventListener('click', () => {
   formModal.classList.add('modal_opened');
+  body.classList.add('page_fixed');
   isFormModalOpen = true;
 })
 
@@ -247,26 +316,9 @@ youTubeModalBtn.addEventListener('click', () => {
 
 youTubeBtn.addEventListener('click', (e) => {
   youTubeModal.classList.add('modal_opened');
+  body.classList.add('page_fixed');
   isYouTubeModalOpen = true;
 })
-
-// Анимация коробки
-gsap.registerPlugin(ScrollTrigger);
-
-var frame_count  = 16,
-    offset_value = 122.3;
-
-gsap.to(".intro__box-image", {
-  backgroundPosition: (-offset_value * frame_count * 2) + "px 0",
-  ease: "steps(" + frame_count + ")",
-  scrollTrigger: {
-    trigger: ".scene",
-    start: "top top",
-    end: "+=" + (400),
-    pin: true,
-    scrub: true,
-  }
-});
 
 // Закрытие модалок на клик по оверлею или на Esc
 document.addEventListener('click', (e) => {
@@ -276,6 +328,8 @@ document.addEventListener('click', (e) => {
 
     youTubeModal.classList.remove('modal_opened');
     isYouTubeModalOpen = false;
+
+    body.classList.remove('page_fixed');
   }
 })
 
@@ -288,13 +342,14 @@ document.addEventListener('keydown', (e) => {
   if (isYouTubeModalOpen && e.key === "Escape") {
     youTubeModal.classList.remove('modal_opened');
     isYouTubeModalOpen = false;
+
+    body.classList.remove('page_fixed');
   }
 })
 
-document.forms.form.addEventListener('submit', (e) => {
-  e.preventDefault();
-
-
-  window.scrollTo(0, animTrigger[3])
-  formModal.classList.remove('modal_opened');
-})
+const btns = document.querySelectorAll('button');
+btns.forEach((btn => {
+  btn.addEventListener('click', () => {
+    btn.blur();
+  })
+}))
