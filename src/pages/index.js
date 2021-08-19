@@ -1,5 +1,7 @@
 import './index.scss';
 
+import footerImage from '../images/mobile-bg-footer.jpg';
+
 import Swiper from '../vendor/swiper/swiper-bundle.min.js';
 
 import { Marquee, loop } from 'dynamic-marquee';
@@ -105,7 +107,7 @@ function stopScroll(scrollToY) {
   body.classList.add('page_overflow')
 
   if(scrollToY) {
-    window.scrollTo(0, scrollToY)
+    window.scrollTo(0, scrollToY + 100)
   }
 
   setTimeout(() => {
@@ -237,53 +239,53 @@ const checkClasses = () => {
   }
 }
 
-const checkProgress = () => {
-  const currentScroll = window.pageYOffset;
-  if (currentScroll <= animTrigger[0]) {
-    bar2.style.width = `0%`;
-    bar3.style.width = `0%`;
-    bar4.style.width = `0%`;
-    bar5.style.width = `0%`;
+// const checkProgress = () => {
+//   const currentScroll = window.pageYOffset;
+//   if (currentScroll <= animTrigger[0]) {
+//     bar2.style.width = `0%`;
+//     bar3.style.width = `0%`;
+//     bar4.style.width = `0%`;
+//     bar5.style.width = `0%`;
 
-    bar1.style.width = `${currentScroll / animTrigger[0] * 100}%`;
-  }
+//     bar1.style.width = `${currentScroll / animTrigger[0] * 100}%`;
+//   }
 
-  if (currentScroll > animTrigger[0] && currentScroll <= animTrigger[1]) {
-    bar1.style.width = `100%`;
-    bar3.style.width = `0%`;
-    bar4.style.width = `0%`;
-    bar5.style.width = `0%`;
+//   if (currentScroll > animTrigger[0] && currentScroll <= animTrigger[1]) {
+//     bar1.style.width = `100%`;
+//     bar3.style.width = `0%`;
+//     bar4.style.width = `0%`;
+//     bar5.style.width = `0%`;
 
-    bar2.style.width = `${(currentScroll - animTrigger[0]) / (animTrigger[1] - animTrigger[0]) * 100}%`;
-  }
+//     bar2.style.width = `${(currentScroll - animTrigger[0]) / (animTrigger[1] - animTrigger[0]) * 100}%`;
+//   }
 
-  if (currentScroll > animTrigger[1] && currentScroll <= animTrigger[2]) {
-    bar1.style.width = `100%`;
-    bar2.style.width = `100%`;
-    bar4.style.width = `0%`;
-    bar5.style.width = `0%`;
+//   if (currentScroll > animTrigger[1] && currentScroll <= animTrigger[2]) {
+//     bar1.style.width = `100%`;
+//     bar2.style.width = `100%`;
+//     bar4.style.width = `0%`;
+//     bar5.style.width = `0%`;
 
-    bar3.style.width = `${(currentScroll - animTrigger[1]) / (animTrigger[2] - animTrigger[1]) * 100}%`;
-  }
+//     bar3.style.width = `${(currentScroll - animTrigger[1]) / (animTrigger[2] - animTrigger[1]) * 100}%`;
+//   }
 
-  if (currentScroll > animTrigger[2] && currentScroll <= animTrigger[3]) {
-    bar1.style.width = `100%`;
-    bar2.style.width = `100%`;
-    bar3.style.width = `100%`;
-    bar5.style.width = `0%`;
+//   if (currentScroll > animTrigger[2] && currentScroll <= animTrigger[3]) {
+//     bar1.style.width = `100%`;
+//     bar2.style.width = `100%`;
+//     bar3.style.width = `100%`;
+//     bar5.style.width = `0%`;
 
-    bar4.style.width = `${(currentScroll - animTrigger[2]) / (animTrigger[3] - animTrigger[2]) * 100}%`;
-  }
+//     bar4.style.width = `${(currentScroll - animTrigger[2]) / (animTrigger[3] - animTrigger[2]) * 100}%`;
+//   }
 
-  if (currentScroll > animTrigger[3]) {
-    bar1.style.width = `100%`;
-    bar2.style.width = `100%`;
-    bar3.style.width = `100%`;
-    bar4.style.width = `100%`;
+//   if (currentScroll > animTrigger[3]) {
+//     bar1.style.width = `100%`;
+//     bar2.style.width = `100%`;
+//     bar3.style.width = `100%`;
+//     bar4.style.width = `100%`;
 
-    bar5.style.width = `100%`;
-  }
-}
+//     bar5.style.width = `100%`;
+//   }
+// }
 
 const bar1 = document.querySelector('#bar1');
 const bar2 = document.querySelector('#bar2');
@@ -293,9 +295,25 @@ const bar5 = document.querySelector('#bar5');
 
 const loadingModal = document.querySelector('.loading');
 
+const btn2 = document.querySelector('.intro__btn_n_2');
+const btn3 = document.querySelector('.intro__btn_n_3');
+const btn4 = document.querySelector('.intro__btn_n_4');
+
+btn2.addEventListener('click', () => {
+  window.scrollTo(0, animTrigger[1]);
+})
+
+btn3.addEventListener('click', () => {
+  window.scrollTo(0, animTrigger[2]);
+})
+
+btn4.addEventListener('click', () => {
+  window.scrollTo(0, animTrigger[3]);
+})
+
 window.onload = () => {
   checkClasses();
-  checkProgress();
+  // checkProgress();
   loadingModal.classList.add('loading_hidden');
   body.classList.remove('page_fixed');
 
@@ -310,7 +328,7 @@ window.onload = () => {
       boxImage.classList.add('intro__box-image_animationReverse');
     }
 
-    checkProgress();
+    // checkProgress();
     checkClasses();
 
     scrollPos = curPos;
@@ -395,3 +413,11 @@ btns.forEach((btn => {
     btn.blur();
   })
 }))
+
+const imageHTML = `<img class="socials__image" src="${footerImage}" alt="ФОРУМ 2022">`;
+
+const socialsContainer = document.querySelector('.socials__media-container');
+
+if (window.innerWidth <= 680) {
+  socialsContainer.innerHTML = imageHTML;
+}

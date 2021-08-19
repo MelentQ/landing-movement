@@ -61,9 +61,10 @@
 
 .box__top {
   top: -5px;
+  left: -1px;
   z-index: 4;
 
-  width: 241px;
+  width: 243px;
   height: 242px;
 
   background-image: url(../images/box/TOP.svg);

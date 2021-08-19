@@ -25,7 +25,7 @@
         <img class="loading__animation" src="<%=require('./images/loading.gif')%>" alt="loading">
       </div>
 
-      <div class="progressBar">
+      <!-- <div class="progressBar">
         <div class="bar" >
           <div class="filler" id="bar1"></div>
         </div>
@@ -41,21 +41,24 @@
         <div class="bar" >
           <div class="filler" id="bar5"></div>
         </div>
-      </div>
+      </div> -->
 
       <div class="socials">
-        <video class="socials__video" autoplay muted loop playsinline>
-          <source src="<%=require('./images/footer-video.webm')%>" type="video/webm">
-          <source src="<%=require('./images/footer-video.mp4')%>" type="video/mp4">
-        </video>
+        <div class="socials__media-container">
+          <video class="socials__video" autoplay muted loop playsinline>
+            <source src="<%=require('./images/footer-video.webm')%>" type="video/webm">
+            <source src="<%=require('./images/footer-video.mp4')%>" type="video/mp4">
+          </video>
+        </div>
 
         <div class="socials__container">
 
-          <form class="form form_place_footer" name="subscribe">
+          <form method="POST" class="form form_place_footer" name="subscribe">
             <h2 class="form__title">Подпишитесь на новости форума</h2>
             <fieldset class="form__fieldset form__fieldset_place_footer">
               <input name="name" class="form__input form__input_place_footer" type="text" placeholder="Имя, фамилия" required>
               <input name="email" class="form__input form__input_place_footer" type="email" placeholder="E-mail" required>
+              <input type="hidden" name="type" value="subscribe">
             </fieldset>
             <button class="form__submit-btn form__submit-btn_place_footer" type="submit"></button>
             <span class="form__label">Нажимая кнопку отправить, вы даёте согласие на обработку персональных данных</span>
@@ -181,7 +184,12 @@
             </div>
           </div>
         </div>
+
+        <button class="intro__btn intro__btn_n_4" type="button">
+          <img class="intro__btn-icon intro__btn-icon_type_down" src="<%=require('./images/btn-down.png')%>" alt="btn-down">
+        </button>
       </div>
+
       <div class="modal modal_type_youtube">
         <div class="youtube">
           <div class="youtube__container">
@@ -206,7 +214,7 @@
       <!-- ФОРМА -->
       <div class="modal" id="formModal">
         <div class="form">
-          <form class="form__form-element" name="form">
+          <form method="POST" class="form__form-element" name="form">
             <fieldset class="form__fieldset">
               <input class="form__input" type="text" name="name" placeholder="Имя, фамилия" required>
               <input class="form__input" type="text" name="company" placeholder="Компания" required>
@@ -252,11 +260,22 @@
           <div class="intro__big-btn-container">
             <button class="intro__big-btn" type="button"></button>
             <span class="intro__big-btn-label">Билеты early birds. Зафиксируйте стартовую цену</span>
+
+            <button class="intro__btn intro__btn_n_3" type="button">
+              <img class="intro__btn-icon intro__btn-icon_type_down" src="<%=require('./images/btn-down.png')%>" alt="btn-down">
+            </button>
           </div>
         </div>
 
         <div class="intro__container intro__container_place_subtitle">
-          <p class="intro__subtitle">Поэтому для смелых девелоперов мы&nbsp;открываем бронирование участия в 3-м форуме. Если вы были на «Движении» 2021, даем слово, что в феврале 2022 сделаем еще лучше.</p>
+          <div class="intro__subtitle">
+            <p class="intro__st">Поэтому для смелых девелоперов мы&nbsp;открываем бронирование участия в&nbsp;3-м&nbsp;форуме. Если вы были на&nbsp;«Движении» 2021, даем слово, что в&nbsp;феврале 2022 сделаем еще лучше.</p>
+
+            <button class="intro__btn intro__btn_n_2" type="button">
+              <img class="intro__btn-icon intro__btn-icon_type_down" src="<%=require('./images/btn-down.png')%>" alt="btn-down">
+            </button>
+          </div>
+
         </div>
 
         <div class="intro__container intro__container_place_title">
