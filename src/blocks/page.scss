@@ -8,6 +8,14 @@
     width: 0;
   }
 
+  &_overflow {
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    -webkit-text-size-adjust: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+  }
+
   &_fixed {
     overflow: hidden;
   }
