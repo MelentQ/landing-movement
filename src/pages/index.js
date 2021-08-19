@@ -421,3 +421,26 @@ const socialsContainer = document.querySelector('.socials__media-container');
 if (window.innerWidth <= 680) {
   socialsContainer.innerHTML = imageHTML;
 }
+
+const boxxContainer = document.querySelector('.box');
+const topb = boxxContainer.querySelector('.box__top');
+const front = boxxContainer.querySelector('.box__front');
+const back = boxxContainer.querySelector('.box__back');
+const megafon = boxxContainer.querySelector('.box__megafon');
+
+window.addEventListener('scroll', () => {
+  const curPos = window.pageYOffset;
+
+  if (curPos >= 1050) {
+    topb.classList.add('box__top_animated');
+    front.classList.add('box__front_animated');
+    back.classList.add('box__back_animated');
+    megafon.classList.add('box__megafon_animated');
+  }
+  else {
+    topb.classList.remove('box__top_animated');
+    front.classList.remove('box__front_animated');
+    back.classList.remove('box__back_animated');
+    megafon.classList.remove('box__megafon_animated');
+  }
+})
