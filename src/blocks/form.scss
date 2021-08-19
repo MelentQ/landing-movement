@@ -37,6 +37,27 @@
     }
   }
 
+  &__success {
+    display: none;
+    flex-direction: column;
+
+    &_open {
+      display: flex;
+    }
+  }
+
+  &__success-title {
+    font-size: 24px;
+    line-height: 1.2;
+    margin-bottom: 40px;
+  }
+
+  &__success-desc {
+    font-size: 20px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+
   &__title {
     margin-top: 0;
     margin-bottom: 20px;
@@ -58,6 +79,10 @@
   &__form-element {
     display: flex;
     flex-direction: column;
+
+    &_hidden {
+      display: none;
+    }
   }
 
   &__fieldset {

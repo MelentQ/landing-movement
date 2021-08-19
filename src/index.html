@@ -219,11 +219,16 @@
               <input class="form__input" type="text" name="name" placeholder="Имя, фамилия" required>
               <input class="form__input" type="text" name="company" placeholder="Компания" required>
               <input class="form__input" type="text" name="position" placeholder="Должность" required>
+              <input class="form__input" type="tel" name="phone" placeholder="Телефон" required>
               <input class="form__input" type="email" name="email" placeholder="E-mail" required>
             </fieldset>
             <button class="form__submit-btn form__submit-btn_place_form" type="submit"></button>
             <span class="form__label">Нажимая кнопку отправить, вы даёте согласие на обработку персональных данных</span>
           </form>
+          <div class="form__success">
+            <span class="form__success-title">Спасибо!</span>
+            <p class="form__success-desc">Ваша заявка принята!</p>
+          </div>
           <div class="form__image-container">
             <img loading="lazy" src="<%=require('./images/movement-logo.svg')%>" alt="logo" class="form__logo">
             <img loading="lazy" src="<%=require('./images/coin.png')%>" alt="image" class="form__image">
@@ -305,7 +310,7 @@
   </main>
   <div style="height: 3000px; z-index: -20;"></div>
 
-  <script src="scripts/submitForm.js"></script>
-  <script src="scripts/subscribeForm.js"></script>
+  <!-- <script src="scripts/submitForm.js"></script>
+  <script src="scripts/subscribeForm.js"></script> -->
 </body>
 </html>

@@ -1,5 +1,8 @@
 import './index.scss';
 
+import '../scripts/submitForm';
+import '../scripts/subscribeForm';
+
 import footerImage from '../images/mobile-bg-footer.jpg';
 
 import Swiper from '../vendor/swiper/swiper-bundle.min.js';
@@ -287,11 +290,11 @@ const checkClasses = () => {
 //   }
 // }
 
-const bar1 = document.querySelector('#bar1');
-const bar2 = document.querySelector('#bar2');
-const bar3 = document.querySelector('#bar3');
-const bar4 = document.querySelector('#bar4');
-const bar5 = document.querySelector('#bar5');
+// const bar1 = document.querySelector('#bar1');
+// const bar2 = document.querySelector('#bar2');
+// const bar3 = document.querySelector('#bar3');
+// const bar4 = document.querySelector('#bar4');
+// const bar5 = document.querySelector('#bar5');
 
 const loadingModal = document.querySelector('.loading');
 
