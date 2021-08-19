@@ -1,8 +1,5 @@
 import './index.scss';
 
-import '../scripts/submitForm';
-import '../scripts/subscribeForm';
-
 import footerImage from '../images/mobile-bg-footer.jpg';
 
 import Swiper from '../vendor/swiper/swiper-bundle.min.js';
@@ -303,15 +300,15 @@ const btn3 = document.querySelector('.intro__btn_n_3');
 const btn4 = document.querySelector('.intro__btn_n_4');
 
 btn2.addEventListener('click', () => {
-  window.scrollTo(0, animTrigger[1]);
+  window.scrollTo(0, animTrigger[1] + 100);
 })
 
 btn3.addEventListener('click', () => {
-  window.scrollTo(0, animTrigger[2]);
+  window.scrollTo(0, animTrigger[2]  + 100);
 })
 
 btn4.addEventListener('click', () => {
-  window.scrollTo(0, animTrigger[3]);
+  window.scrollTo(0, animTrigger[3]  + 100);
 })
 
 window.onload = () => {
