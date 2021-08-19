@@ -237,6 +237,12 @@
           <div class="intro__box">
             <div class="intro__box-shadow"></div>
             <div class="intro__box-image">
+              <div class="box">
+                <div class="box__item box__back"></div>
+                <div class="box__item box__megafon"></div>
+                <div class="box__item box__front"></div>
+                <div class="box__item box__top"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -282,5 +288,31 @@
 
   <script src="scripts/submitForm.js"></script>
   <script src="scripts/subscribeForm.js"></script>
+
+  <script>
+    const box = document.querySelector('.box');
+    const topb = box.querySelector('.box__top');
+    const front = box.querySelector('.box__front');
+    const back = box.querySelector('.box__back');
+    const megafon = box.querySelector('.box__megafon');
+
+    let scrollPos = window.pageYOffset;
+    window.addEventListener('scroll', () => {
+      const curPos = window.pageYOffset;
+
+      if (curPos >= 1050) {
+        topb.classList.add('box__top_animated');
+        front.classList.add('box__front_animated');
+        back.classList.add('box__back_animated');
+        megafon.classList.add('box__megafon_animated');
+      }
+      else {
+        topb.classList.remove('box__top_animated');
+        front.classList.remove('box__front_animated');
+        back.classList.remove('box__back_animated');
+        megafon.classList.remove('box__megafon_animated');
+      }
+    })
+  </script>
 </body>
 </html>

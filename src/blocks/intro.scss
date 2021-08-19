@@ -166,26 +166,26 @@
 
     height: 100%;
 
-    background-image: url(../images/box.png);
-    background-repeat: no-repeat;
-    background-position: 0 0;
-    background-size: auto 100%;
+    // background-image: url(../images/box.png);
+    // background-repeat: no-repeat;
+    // background-position: 0 0;
+    // background-size: auto 100%;
 
-    &_animation {
-      animation-name: animationBox;
-      animation-duration: 0.5s;
-      animation-timing-function: step-end;
-      animation-iteration-count: 1;
-      animation-fill-mode: forwards;
-    }
+    // &_animation {
+    //   animation-name: animationBox;
+    //   animation-duration: 0.5s;
+    //   animation-timing-function: step-end;
+    //   animation-iteration-count: 1;
+    //   animation-fill-mode: forwards;
+    // }
 
-    &_animationReverse {
-      animation-name: animationBoxReverse;
-      animation-duration: 0.5s;
-      animation-timing-function: step-end;
-      animation-iteration-count: 1;
-      animation-fill-mode: forwards;
-    }
+    // &_animationReverse {
+    //   animation-name: animationBoxReverse;
+    //   animation-duration: 0.5s;
+    //   animation-timing-function: step-end;
+    //   animation-iteration-count: 1;
+    //   animation-fill-mode: forwards;
+    // }
   }
 
   &__box-shadow {
